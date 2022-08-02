@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/02 21:10:15 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/02 21:16:11 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,25 +15,21 @@
 CC		= cc
 MAKE	= make
 CFLAGS	= -Wall -Werror -Wextra
-LFLAGS	= -L$(LIBFT_DIR)
-LINKS	= -lft
 
 ### EXECUTABLE ###
-NAME		= binary_name
+NAME		= philo
 ARGS		= args
 
 ### INCLUDES ###
 OBJ_DIR		= bin
 SRC_DIR		= src
 HEADER		= incl
-LIBFT_DIR	= libft
-LIBFT		= $(LIBFT_DIR)/libft.a
 
 ### SOURCE FILES ###
 SRCS	= 	main.c
 
 ### HEADER FILES ###
-HEADER_FILES	= binary_name.h
+HEADER_FILES	= philo.h
 HEADERS			= $(addprefix $(HEADER)/, $(HEADER_FILES))
 
 ### OBJECTS ###
@@ -61,12 +57,8 @@ endif
 ### RULES ###
 all:	$(NAME)
 
-$(LIBFT):
-	@echo "$(NAME): $(GREEN)Compiling $(LIBFT_DIR)$(RESET)"
-	@$(MAKE) addon -C $(LIBFT_DIR)
-
-$(NAME):	$(LIBFT) $(OBJ_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(LFLAGS) $(OBJS) $(LINKS) -o $(NAME)
+$(NAME):	$(OBJ_DIR) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(NAME): $(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(GREEN)[Done]$(RESET)"
 	@echo "$(NAME): $(GREEN)Project successfully compiled$(RESET)"
 
@@ -84,12 +76,10 @@ val: $(NAME)
 	@$(VALGRIND) ./$(NAME) $(ARGS)
 
 clean:
-	@$(MAKE) clean -C $(LIBFT_DIR)
 	@echo "$(NAME): $(RED)Supressing object files$(RESET)"
 	@rm -rf $(OBJ_DIR)
 
 fclean:	clean
-	@$(MAKE) fclean -C $(LIBFT_DIR)
 	@echo "$(NAME): $(RED)Supressing program file$(RESET)"
 	@rm -f $(NAME)
 
