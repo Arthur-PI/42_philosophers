@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 11:29:08 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/03 18:24:16 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,14 @@ typedef struct s_philo
 
 typedef struct timeval t_time;
 
-int	parse_args(char **args, t_philo_infos *infos);
-int	ft_abs(int n);
-int	ft_isdigit(int c);
-int	usage(const char *p_name);
-int	error_msg(const char *msg, int code);
-int	init_thread(t_philo_infos infos, t_philo *philos);
+int		parse_args(char **args, t_philo_infos *infos);
+int		ft_abs(int n);
+int		ft_isdigit(int c);
+int		usage(const char *p_name);
+int		error_msg(const char *msg, int code);
+int		init_thread(t_philo_infos infos, t_philo *philos);
+int		init_philosophers(int nb_philo, t_philo **philos);
+void	destroy_philosophers(t_philo *philos);
+void	print_philo(int nb_philo, t_philo *philos);
 
 #endif
