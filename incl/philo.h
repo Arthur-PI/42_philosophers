@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 18:24:16 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/03 18:43:20 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	int		id;
-	t_fork	f_left;
-	t_fork	f_right;
+	int	id;
+	int	fork_left;
+	int	fork_right;
 }				t_philo;
 
 typedef struct timeval t_time;
