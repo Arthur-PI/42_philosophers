@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 11:27:48 by apigeon          ###   ########.fr       */
+/*   Created: 2022/08/03 11:21:19 by apigeon           #+#    #+#             */
+/*   Updated: 2022/08/03 11:22:18 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_abs(int n)
+int	init_thread(t_philo_infos infos, t_philo *philos)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c < '0' || c > '9')
-		return (FALSE);
-	return (TRUE);
+	(void)infos;
+	(void)philos;
+	return (ALL_GOOD);
 }

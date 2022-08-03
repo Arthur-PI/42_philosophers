@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 21:19:24 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 00:55:44 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/03 09:56:02 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,19 @@ static int	custom_atoi(char *s, int *err)
 
 int	parse_args(char **args, t_philo_infos *infos)
 {
-	int	err1;
-	int	err2;
-	int	err3;
-	int	err4;
+	int	i;
+	int	err[5];
 
-	infos->nb_philo = custom_atoi(args[0], &err1);
-	infos->time_to_die = custom_atoi(args[1], &err2);
-	infos->time_to_eat = custom_atoi(args[2], &err3);
-	infos->time_to_sleep = custom_atoi(args[3], &err4);
-	if (err1 == ERROR || err2 == ERROR || err3 == ERROR || err4 == ERROR)
-		return (PARSE_ERROR);
+	infos->nb_philo = custom_atoi(args[0], &err[0]);
+	infos->time_to_die = custom_atoi(args[1], &err[1]);
+	infos->time_to_eat = custom_atoi(args[2], &err[2]);
+	infos->time_to_sleep = custom_atoi(args[3], &err[3]);
+	err[4] = ALL_GOOD;
+	if (args[4])
+		infos->nb_eat = custom_atoi(args[4], &err[4]);
+	i = 0;
+	while (i < 5)
+		if (err[i++] == ERROR)
+			return (PARSE_ERROR);
 	return (ALL_GOOD);
 }

@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 11:27:48 by apigeon          ###   ########.fr       */
+/*   Created: 2022/08/03 09:47:58 by apigeon           #+#    #+#             */
+/*   Updated: 2022/08/03 09:48:20 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_abs(int n)
+int	usage(const char *p_name)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
+	printf("Usage: %s nb_philo time_to_die time_to_eat", p_name);
+	printf(" time_to_sleep [nb_times_must_eat]\n");
+	return (1);
 }
 
-int	ft_isdigit(int c)
+int	error_msg(const char *msg, int code)
 {
-	if (c < '0' || c > '9')
-		return (FALSE);
-	return (TRUE);
+	printf("%s\n", msg);
+	return (code);
 }

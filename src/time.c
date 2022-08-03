@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 11:27:48 by apigeon          ###   ########.fr       */
+/*   Created: 2022/08/03 10:17:27 by apigeon           #+#    #+#             */
+/*   Updated: 2022/08/03 11:04:58 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_abs(int n)
+t_time	get_time(void)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
+	t_time	time;
+
+	gettimeofday(&time, NULL);
+	return (time);
 }
 
-int	ft_isdigit(int c)
+int	get_time_diff(t_time t1, t_time t2)
 {
-	if (c < '0' || c > '9')
-		return (FALSE);
-	return (TRUE);
+	int	diff;
+
+	diff = ft_abs(t1.tv_sec - t2.tv_sec) * SEC_TO_USEC;
+	diff += ft_abs(t1.tv_usec - t2.tv_usec);
+	return (diff);
 }

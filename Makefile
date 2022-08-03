@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/03 00:56:23 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/03 11:26:21 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS	= -Wall -Werror -Wextra
 
 ### EXECUTABLE ###
 NAME		= philo
-ARGS		= args
+ARGS		= 1 100 100 100
 
 ### INCLUDES ###
 OBJ_DIR		= bin
@@ -29,6 +29,10 @@ HEADER		= incl
 SRCS	= 	main.c \
 			parse.c \
 			utils.c \
+			error.c \
+			thread.c \
+			time.c \
+
 
 ### HEADER FILES ###
 HEADER_FILES	= philo.h
