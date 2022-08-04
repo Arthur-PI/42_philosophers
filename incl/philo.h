@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/04 21:21:27 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/04 20:12:48 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		usage(const char *p_name);
 int		error_msg(int code);
 int		init_thread(t_philo_infos infos, t_philo *philos);
 int		init_philosophers(int nb_philo, t_philo **philos);
-void	destroy_philosophers(t_philo *philos);
+void	destroy_philosophers(int nb_philo, t_philo *philos);
 void	print_philo(int nb_philo, t_philo *philos);
 
 #endif
