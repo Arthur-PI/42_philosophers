@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 18:43:20 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/04 21:21:27 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <pthread.h>
 # include <sys/time.h>
 
-# define ALL_GOOD 1
+# define ALL_GOOD 0
 # define ERROR -1
 # define PARSE_ERROR -2
-# define PHILO_INIT_ERROR -3
-# define THREAD_INIT_ERROR -4
+# define PHILO_MALLOC_ERROR -3
+# define FORK_MALLOC_ERROR -4
+# define THREAD_INIT_ERROR -5
+
+# define DEBUG_MODE 0
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
@@ -35,6 +39,9 @@
 #  define FALSE 0
 # endif
 
+typedef struct timeval t_time;
+typedef pthread_mutex_t t_fork;
+
 typedef struct s_philo_infos
 {
 	int	nb_philo;
@@ -44,25 +51,20 @@ typedef struct s_philo_infos
 	int	nb_eat;
 }				t_philo_infos;
 
-typedef struct s_fork
-{
-	int	mutex;
-}				t_fork;
-
 typedef struct s_philo
 {
-	int	id;
-	int	fork_left;
-	int	fork_right;
+	int		id;
+	t_time	time_last_eat;
+	t_fork	fork_left;
+	t_fork	fork_right;
 }				t_philo;
 
-typedef struct timeval t_time;
 
 int		parse_args(char **args, t_philo_infos *infos);
 int		ft_abs(int n);
 int		ft_isdigit(int c);
 int		usage(const char *p_name);
-int		error_msg(const char *msg, int code);
+int		error_msg(int code);
 int		init_thread(t_philo_infos infos, t_philo *philos);
 int		init_philosophers(int nb_philo, t_philo **philos);
 void	destroy_philosophers(t_philo *philos);

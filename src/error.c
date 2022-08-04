@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 09:47:58 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/03 09:48:20 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/04 21:29:36 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int	usage(const char *p_name)
 	return (1);
 }
 
-int	error_msg(const char *msg, int code)
+int	error_msg(int code)
 {
-	printf("%s\n", msg);
+	char	*s;
+
+	s = "An error occured during the program";
+	printf("%s\n", s);
 	return (code);
 }
