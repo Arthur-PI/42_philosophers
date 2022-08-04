@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:22:32 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/04 20:15:14 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/05 00:28:55 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_philo	get_philo(int id, t_fork left_fork)
 
 	philo.id = id;
 	philo.fork_left = left_fork;
-	if (id == 3 || pthread_mutex_init(&philo.fork_right, NULL))
+	if (pthread_mutex_init(&philo.fork_right, NULL))
 		philo.id = 0;
 	return (philo);
 }

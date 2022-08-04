@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/04 20:12:48 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/05 00:49:04 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include <sys/time.h>
 
 # define ALL_GOOD 0
-# define ERROR -1
-# define PARSE_ERROR -2
-# define PHILO_MALLOC_ERROR -3
-# define FORK_MALLOC_ERROR -4
-# define THREAD_INIT_ERROR -5
+# define ERROR 1
+# define PARSE_ERROR 2
+# define PHILO_MALLOC_ERROR 3
+# define FORK_MALLOC_ERROR 4
+# define THREAD_INIT_ERROR 5
 
 # define DEBUG_MODE 0
 
@@ -38,6 +38,11 @@
 #  define TRUE 1
 #  define FALSE 0
 # endif
+
+# define FORK_MESSAGE "has taken a fork"
+# define EAT_MESSAGE "is eating"
+# define SLEEP_MESSAGE "is sleeping"
+# define THINK_MESSAGE "is thinking"
 
 typedef struct timeval t_time;
 typedef pthread_mutex_t t_fork;
@@ -69,5 +74,6 @@ int		init_thread(t_philo_infos infos, t_philo *philos);
 int		init_philosophers(int nb_philo, t_philo **philos);
 void	destroy_philosophers(int nb_philo, t_philo *philos);
 void	print_philo(int nb_philo, t_philo *philos);
+t_time	get_time(void);
 
 #endif
