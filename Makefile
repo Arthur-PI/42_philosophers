@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/03 18:25:23 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/05 11:53:13 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS	= 	main.c \
 			thread.c \
 			time.c \
 			philo_utils.c \
+			philo_actions.c \
 
 
 ### HEADER FILES ###

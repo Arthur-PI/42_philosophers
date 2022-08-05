@@ -6,12 +6,14 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/05 00:49:04 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/05 12:44:14 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
+# include "color.h"
 
 # include <unistd.h>
 # include <stdio.h>
@@ -40,12 +42,12 @@
 # endif
 
 # define FORK_MESSAGE "has taken a fork"
-# define EAT_MESSAGE "is eating"
-# define SLEEP_MESSAGE "is sleeping"
-# define THINK_MESSAGE "is thinking"
+# define EAT_MESSAGE "is " GREEN "eating" RESET
+# define SLEEP_MESSAGE "is " BLUE "sleeping" RESET
+# define THINK_MESSAGE "is " YELLOW "thinking" RESET
 
-typedef struct timeval t_time;
-typedef pthread_mutex_t t_fork;
+typedef struct timeval	t_time;
+typedef pthread_mutex_t	t_fork;
 
 typedef struct s_philo_infos
 {
@@ -60,10 +62,9 @@ typedef struct s_philo
 {
 	int		id;
 	t_time	time_last_eat;
-	t_fork	fork_left;
-	t_fork	fork_right;
+	t_fork	*fork_left;
+	t_fork	*fork_right;
 }				t_philo;
-
 
 int		parse_args(char **args, t_philo_infos *infos);
 int		ft_abs(int n);
@@ -75,5 +76,7 @@ int		init_philosophers(int nb_philo, t_philo **philos);
 void	destroy_philosophers(int nb_philo, t_philo *philos);
 void	print_philo(int nb_philo, t_philo *philos);
 t_time	get_time(void);
+void	*philo_main(void *args);
+void	info_msg(t_time time, int id, char *msg);
 
 #endif

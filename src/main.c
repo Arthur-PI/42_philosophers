@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:33:44 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/04 20:12:30 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/05 12:50:06 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ int	main(int ac, char **av)
 	err = init_philosophers(philo_infos.nb_philo, &philosophers);
 	if (err != ALL_GOOD)
 		return (error_msg(err));
+	print_philo(philo_infos.nb_philo, philosophers);
 	err = init_thread(philo_infos, philosophers);
 	if (err != ALL_GOOD)
 	{
 		destroy_philosophers(philo_infos.nb_philo, philosophers);
 		return (error_msg(err));
 	}
-	//start_threads(philo_infos, philosphers);
-	print_philo(philo_infos.nb_philo, philosophers);
 	destroy_philosophers(philo_infos.nb_philo, philosophers);
-	printf("This is Philosophers\n");
 	return (0);
 }
