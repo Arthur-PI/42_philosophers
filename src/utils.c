@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/05 12:56:46 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/07 15:58:20 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_isdigit(int c)
 	return (TRUE);
 }
 
-void	info_msg(t_time time, int id, char *msg)
+void	info_msg(long time, int id, char *msg)
 {
-	printf("%3d %d %s\n", time.tv_usec / 1000, id, msg);
+	printf("%4ld " WHITE "%d" RESET " %s\n", time, id, msg);
 }
