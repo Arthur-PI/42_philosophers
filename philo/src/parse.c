@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 21:19:24 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/08 15:36:44 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/09 14:06:46 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int	parse_args(char **args, t_philo_infos *infos)
 	infos->time_to_eat = custom_atoi(args[2], &err[2]);
 	infos->time_to_sleep = custom_atoi(args[3], &err[3]);
 	infos->over = FALSE;
-	if (pthread_mutex_init(&infos->state_mutex, NULL) == -1)
+	infos->state_mutex = malloc(sizeof(*infos->state_mutex));
+	if (!infos->state_mutex || pthread_mutex_init(infos->state_mutex, NULL) == -1)
 		return (MUTEX_INIT_ERROR);
 	err[4] = ALL_GOOD;
 	if (args[4])

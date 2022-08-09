@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:38:16 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/08 16:56:09 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/09 14:07:23 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,10 @@ int	is_philo_dead(t_philo *philo, t_philo_infos *infos)
 {
 	if (get_time_diff(get_time(infos->start_time), philo->time_last_eat) >= infos->time_to_die)	
 	{
+		pthread_mutex_lock(infos->state_mutex);
 		info_msg(get_time(infos->start_time), philo, DIE_MESSAGE);
 		infos->over = TRUE;
+		pthread_mutex_unlock(infos->state_mutex);
 		return (TRUE);
 	}
 	return (FALSE);

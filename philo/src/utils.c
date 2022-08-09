@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/08 16:20:08 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/09 14:08:32 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	ft_isdigit(int c)
 
 void	info_msg(long time, t_philo *philo, char *msg)
 {
+	printf("Caca %d\n", philo->id);
+	pthread_mutex_lock(philo->infos->state_mutex);
 	if (!philo->infos->over)
 		printf("%4ld %d %s\n", time, philo->id, msg);
+	pthread_mutex_unlock(philo->infos->state_mutex);
 }

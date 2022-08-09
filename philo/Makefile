@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/08 11:46:12 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/09 13:33:26 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 ### COMPILATION ###
 CC		= cc
 MAKE	= make
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g3 -pthread
 
 ### EXECUTABLE ###
 NAME		= philo
-ARGS		= 4 311 150 150
+ARGS		= 5 800 200 200
 
 ### INCLUDES ###
 OBJ_DIR		= bin
@@ -37,7 +37,7 @@ SRCS	= 	main.c \
 
 
 ### HEADER FILES ###
-HEADER_FILES	= philo.h
+HEADER_FILES	= philo.h color.h
 HEADERS			= $(addprefix $(HEADER)/, $(HEADER_FILES))
 
 ### OBJECTS ###

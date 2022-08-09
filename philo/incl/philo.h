@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/08 16:39:58 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/09 14:07:14 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,18 @@
 
 # define SEC_TO_USEC 1000000
 
+# define MS_MULTIPLIER 1000
+
 # ifndef T_BOOL_H
 #  define TRUE 1
 #  define FALSE 0
 # endif
 
-# define FORK_MESSAGE "has taken a fork"
-# define EAT_MESSAGE "is eating"
-# define SLEEP_MESSAGE "is sleeping"
-# define THINK_MESSAGE "is thinking"
-# define DIE_MESSAGE "died"
+# define FORK_MESSAGE	WHITE "has taken a fork" RESET
+# define EAT_MESSAGE	GREEN "is eating" RESET
+# define SLEEP_MESSAGE	BLUE "is sleeping" RESET
+# define THINK_MESSAGE	YELLOW "is thinking" RESET
+# define DIE_MESSAGE	RED "died" RESET
 
 typedef struct timeval	t_time;
 typedef pthread_mutex_t	t_fork;
@@ -66,7 +68,7 @@ typedef struct s_philo_infos
 	int				over;
 	long			start_time;
 	t_fork			*forks;
-	pthread_mutex_t	state_mutex;
+	pthread_mutex_t	*state_mutex;
 }				t_philo_infos;
 
 typedef struct s_philo
