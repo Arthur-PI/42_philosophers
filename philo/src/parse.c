@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 21:19:24 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/07 16:50:46 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/08 15:36:44 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static int	custom_atoi(char *s, int *err)
 	n *= sign;
 	if (s[i] != 0 || i == 0 || n > INT_MAX || n < INT_MIN)
 		return (0);
-	*err = ALL_GOOD;
+	if (n >= 0)
+		*err = ALL_GOOD;
 	return (n);
 }
 

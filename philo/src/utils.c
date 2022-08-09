@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/07 15:58:20 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/08 16:20:08 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	ft_isdigit(int c)
 	return (TRUE);
 }
 
-void	info_msg(long time, int id, char *msg)
+void	info_msg(long time, t_philo *philo, char *msg)
 {
-	printf("%4ld " WHITE "%d" RESET " %s\n", time, id, msg);
+	if (!philo->infos->over)
+		printf("%4ld %d %s\n", time, philo->id, msg);
 }

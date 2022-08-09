@@ -4,3 +4,5 @@
 **/*.o
 **/tags
 philo/philo
+socrates/
+**/logs.txt

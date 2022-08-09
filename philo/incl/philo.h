@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/07 16:50:27 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/08 16:39:58 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@
 #  define FALSE 0
 # endif
 
-# define FORK_MESSAGE "has taken a " WHITE "fork" RESET
-# define EAT_MESSAGE "is " GREEN "eating" RESET
-# define SLEEP_MESSAGE "is " BLUE "sleeping" RESET
-# define THINK_MESSAGE "is " YELLOW "thinking" RESET
-# define DIE_MESSAGE RED "died" RESET
+# define FORK_MESSAGE "has taken a fork"
+# define EAT_MESSAGE "is eating"
+# define SLEEP_MESSAGE "is sleeping"
+# define THINK_MESSAGE "is thinking"
+# define DIE_MESSAGE "died"
 
 typedef struct timeval	t_time;
 typedef pthread_mutex_t	t_fork;
@@ -95,6 +95,6 @@ void	print_philo(int nb_philo, t_philo *philos);
 long	get_time(long start);
 long	get_time_diff(long t1, long t2);
 void	*philo_main(void *args);
-void	info_msg(long time, int id, char *msg);
+void	info_msg(long time, t_philo *philo, char *msg);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/07 19:45:37 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/08 11:46:12 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS	= -Wall -Werror -Wextra
 
 ### EXECUTABLE ###
 NAME		= philo
-ARGS		= 4 220 100 100
+ARGS		= 4 311 150 150
 
 ### INCLUDES ###
 OBJ_DIR		= bin
