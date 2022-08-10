@@ -6,18 +6,11 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 15:42:03 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 18:10:26 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	ft_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
 
 int	ft_isdigit(int c)
 {

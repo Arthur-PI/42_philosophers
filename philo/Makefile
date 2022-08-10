@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/10 15:03:32 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/10 18:38:10 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRCS	=  main.c \
 
 
 ### HEADER FILES ###
-H_FILES	= philo.h color.h
+H_FILES	= philo.h
 HEADERS	= $(addprefix $(H_DIR)/, $(H_FILES))
 
 ### OBJECTS ###

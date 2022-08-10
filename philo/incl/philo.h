@@ -6,14 +6,12 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 15:20:14 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 18:19:22 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-
-# include "color.h"
 
 # include <unistd.h>
 # include <stdio.h>
@@ -39,22 +37,18 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-# define SEC_TO_USEC 1000000
-
-# define MS_MULTIPLIER 1000
-
 # ifndef T_BOOL_H
 #  define TRUE 1
 #  define FALSE 0
 # endif
 
-# define INFO_MSG "%4ld " WHITE "%d" RESET " %s\n"
+# define INFO_MSG "%4ld \033[1;37m%d\033[0m %s\n"
 
 # define FORK_MESSAGE	"has taken a fork"
-# define EAT_MESSAGE	GREEN "is eating" RESET
-# define SLEEP_MESSAGE	BLUE "is sleeping" RESET
-# define THINK_MESSAGE	YELLOW "is thinking" RESET
-# define DIE_MESSAGE	RED "died" RESET
+# define EAT_MESSAGE	"\033[1;32mis eating\033[0m"
+# define SLEEP_MESSAGE	"\033[1;34mis sleeping\033[0m"
+# define THINK_MESSAGE	"\033[1;33mis thinking\033[0m"
+# define DIE_MESSAGE	"\033[1;31mdied\033[0m"
 
 typedef struct timeval	t_time;
 typedef pthread_mutex_t	t_fork;
@@ -84,19 +78,20 @@ typedef struct s_philo
 	t_philo_infos	*infos;
 }				t_philo;
 
-int		parse_args(char **args, t_philo_infos *infos);
+void	*philo_main(void *args);
+void	check_max_eat(t_philo_infos *infos);
+void	ft_usleep(int ms, t_philo_infos *infos);
+void	info_msg(long time, t_philo *philo, char *msg);
+
 int		ft_abs(int n);
 int		ft_isdigit(int c);
-int		usage(const char *p_name);
 int		error_msg(int code);
+int		usage(const char *p_name);
+int		someone_died(t_philo_infos *infos);
+int		parse_args(char **args, t_philo_infos *infos);
 int		init_thread(t_philo_infos *infos, t_philo *philos);
 int		init_philosophers(t_philo_infos *infos, t_philo **philos_ptr);
-void	print_philo(int nb_philo, t_philo *philos);
+
 long	get_time(long start);
-long	get_time_diff(long t1, long t2);
-void	*philo_main(void *args);
-void	info_msg(long time, t_philo *philo, char *msg);
-void	ft_usleep(int ms, t_philo_infos *infos);
-int		someone_died(t_philo_infos *infos);
 
 #endif

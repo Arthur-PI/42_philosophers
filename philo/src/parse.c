@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 21:19:24 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 14:43:43 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 18:07:49 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	custom_atoi(char *s, int *err)
 	return (n);
 }
 
-t_fork	*get_forks(int nb_forks)
+static t_fork	*get_forks(int nb_forks)
 {
 	int		i;
 	t_fork	*forks;

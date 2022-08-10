@@ -6,26 +6,21 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:38:16 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 15:05:44 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 18:28:59 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	someone_died(t_philo_infos *infos)
-{
-	int	ret;
-
-	pthread_mutex_lock(&infos->over_mutex);
-	ret = infos->over;
-	pthread_mutex_unlock(&infos->over_mutex);
-	return (ret);
-}
-
 static void	philo_eat(t_philo *philo, t_philo_infos *infos)
 {
 	pthread_mutex_lock(philo->fork_right);
 	info_msg(get_time(infos->start_time), philo, FORK_MESSAGE);
+	if (!philo->fork_left)
+	{
+		ft_usleep(infos->time_to_die * 2, infos);
+		return ;
+	}
 	pthread_mutex_lock(philo->fork_left);
 	info_msg(get_time(infos->start_time), philo, FORK_MESSAGE);
 	info_msg(get_time(infos->start_time), philo, EAT_MESSAGE);
@@ -52,18 +47,6 @@ static void	philo_sleep(t_philo *philo, t_philo_infos *infos)
 static void	philo_think(t_philo *philo, t_philo_infos *infos)
 {
 	info_msg(get_time(infos->start_time), philo, THINK_MESSAGE);
-}
-
-static void	check_max_eat(t_philo_infos *infos)
-{
-	pthread_mutex_lock(&infos->eat_times_mutex);
-	if (infos->must_eat_times >= 0 && infos->eat_times == infos->nb_philo)
-	{
-		pthread_mutex_lock(&infos->over_mutex);
-		infos->over = TRUE;
-		pthread_mutex_unlock(&infos->over_mutex);
-	}
-	pthread_mutex_unlock(&infos->eat_times_mutex);
 }
 
 static void	*death_main(void *arg)

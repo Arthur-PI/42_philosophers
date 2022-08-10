@@ -6,13 +6,13 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:33:44 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 14:08:24 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 18:07:26 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	free_all(t_philo_infos *infos, t_philo *philo)
+static void	free_all(t_philo_infos *infos, t_philo *philo)
 {
 	int	i;
 
