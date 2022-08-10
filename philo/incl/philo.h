@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/09 14:07:14 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 14:55:34 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@
 #  define FALSE 0
 # endif
 
-# define FORK_MESSAGE	WHITE "has taken a fork" RESET
+# define INFO_MSG		"%4ld " WHITE "%d" RESET " %s\n"
+
+# define FORK_MESSAGE	"has taken a fork"
 # define EAT_MESSAGE	GREEN "is eating" RESET
 # define SLEEP_MESSAGE	BLUE "is sleeping" RESET
 # define THINK_MESSAGE	YELLOW "is thinking" RESET
@@ -64,16 +66,19 @@ typedef struct s_philo_infos
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				nb_eat;
+	int				must_eat_times;
 	int				over;
+	int				eat_times;
 	long			start_time;
 	t_fork			*forks;
-	pthread_mutex_t	*state_mutex;
+	pthread_mutex_t	over_mutex;
+	pthread_mutex_t	eat_times_mutex;
 }				t_philo_infos;
 
 typedef struct s_philo
 {
 	int				id;
+	int				nb_eat;
 	long			time_last_eat;
 	t_fork			*fork_left;
 	t_fork			*fork_right;
@@ -98,5 +103,7 @@ long	get_time(long start);
 long	get_time_diff(long t1, long t2);
 void	*philo_main(void *args);
 void	info_msg(long time, t_philo *philo, char *msg);
+void	ft_usleep(int ms, t_philo_infos *infos);
+int		someone_died(t_philo_infos *infos);
 
 #endif

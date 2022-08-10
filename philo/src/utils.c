@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 00:50:53 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/09 14:08:32 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:42:03 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,22 @@ int	ft_isdigit(int c)
 
 void	info_msg(long time, t_philo *philo, char *msg)
 {
-	printf("Caca %d\n", philo->id);
-	pthread_mutex_lock(philo->infos->state_mutex);
+	pthread_mutex_lock(&philo->infos->over_mutex);
 	if (!philo->infos->over)
-		printf("%4ld %d %s\n", time, philo->id, msg);
-	pthread_mutex_unlock(philo->infos->state_mutex);
+		printf(INFO_MSG, time, philo->id, msg);
+	pthread_mutex_unlock(&philo->infos->over_mutex);
+}
+
+void	ft_usleep(int ms, t_philo_infos *infos)
+{
+	int		offset;
+	long	start;
+
+	start = get_time(0);
+	offset = 10;
+	if (ms < 100)
+		offset = ms / 10;
+	offset *= 100;
+	while (!someone_died(infos) && get_time(start) < ms)
+		usleep(offset);
 }

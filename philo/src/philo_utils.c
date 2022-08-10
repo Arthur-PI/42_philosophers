@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:22:32 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/07 14:38:18 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 14:15:39 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_philo	get_philo(int id, t_philo_infos *infos)
 	t_philo	philo;
 
 	philo.id = id;
+	philo.nb_eat = 0;
 	philo.fork_right = infos->forks + (id - 1);
 	philo.fork_left = infos->forks + mod_number(id - 2, infos->nb_philo);
 	philo.infos = infos;

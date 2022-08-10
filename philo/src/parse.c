@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 21:19:24 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/09 14:06:46 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 14:43:43 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	custom_atoi(char *s, int *err)
 	n *= sign;
 	if (s[i] != 0 || i == 0 || n > INT_MAX || n < INT_MIN)
 		return (0);
-	if (n >= 0)
+	if (n > 0)
 		*err = ALL_GOOD;
 	return (n);
 }
@@ -75,13 +75,16 @@ int	parse_args(char **args, t_philo_infos *infos)
 	infos->time_to_die = custom_atoi(args[1], &err[1]);
 	infos->time_to_eat = custom_atoi(args[2], &err[2]);
 	infos->time_to_sleep = custom_atoi(args[3], &err[3]);
+	infos->eat_times = 0;
 	infos->over = FALSE;
-	infos->state_mutex = malloc(sizeof(*infos->state_mutex));
-	if (!infos->state_mutex || pthread_mutex_init(infos->state_mutex, NULL) == -1)
+	if (pthread_mutex_init(&infos->over_mutex, NULL) == -1)
 		return (MUTEX_INIT_ERROR);
+	if (pthread_mutex_init(&infos->eat_times_mutex, NULL) == -1)
+		return (MUTEX_INIT_ERROR);
+	infos->must_eat_times = -1;
 	err[4] = ALL_GOOD;
 	if (args[4])
-		infos->nb_eat = custom_atoi(args[4], &err[4]);
+		infos->must_eat_times = custom_atoi(args[4], &err[4]);
 	i = 0;
 	while (i < 5)
 		if (err[i++] == ERROR)

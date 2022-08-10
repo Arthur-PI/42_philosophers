@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/09 13:33:26 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/10 15:42:48 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,31 +14,31 @@
 ### COMPILATION ###
 CC		= cc
 MAKE	= make
-CFLAGS	= -Wall -Werror -Wextra -g3 -pthread
+CFLAGS	= -Wall -Wextra -Werror -pthread -fsanitize=thread#-g
 
 ### EXECUTABLE ###
-NAME		= philo
-ARGS		= 5 800 200 200
+NAME	= philo
+ARGS	= 5 800 200 200 5
 
 ### INCLUDES ###
-OBJ_DIR		= bin
-SRC_DIR		= src
-HEADER		= incl
+OBJ_DIR	= bin
+SRC_DIR	= src
+H_DIR	= incl
 
 ### SOURCE FILES ###
-SRCS	= 	main.c \
-			parse.c \
-			utils.c \
-			error.c \
-			thread.c \
-			time.c \
-			philo_utils.c \
-			philo_actions.c \
+SRCS	=  main.c \
+		   parse.c \
+		   utils.c \
+		   error.c \
+		   thread.c \
+		   time.c \
+		   philo_utils.c \
+		   philo_actions.c \
 
 
 ### HEADER FILES ###
-HEADER_FILES	= philo.h color.h
-HEADERS			= $(addprefix $(HEADER)/, $(HEADER_FILES))
+H_FILES	= philo.h color.h
+HEADERS	= $(addprefix $(H_DIR)/, $(H_FILES))
 
 ### OBJECTS ###
 OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -74,7 +74,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADERS)
-	@$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT_DIR)/$(HEADER) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(H_DIR) -c $< -o $@
 	@echo "$(NAME): $(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(GREEN)[Done]$(RESET)"
 
 run: $(NAME)
