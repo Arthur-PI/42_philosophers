@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/10 15:42:48 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/10 15:03:32 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 ### COMPILATION ###
 CC		= cc
 MAKE	= make
-CFLAGS	= -Wall -Wextra -Werror -pthread -fsanitize=thread#-g
+CFLAGS	= -Wall -Wextra -Werror -pthread -g
 
 ### EXECUTABLE ###
 NAME	= philo
-ARGS	= 5 800 200 200 5
+ARGS	= 4 800 200 200 5
 
 ### INCLUDES ###
 OBJ_DIR	= bin
@@ -59,7 +59,7 @@ UNAME_S = $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 	VALGRIND = leaks --list --groupByType --atExit --
 else
-	VALGRIND = valgrind --track-origins=yes --leak-check=full
+	VALGRIND = valgrind --track-origins=yes --leak-check=full -s
 endif
 
 ### RULES ###

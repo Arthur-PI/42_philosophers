@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:22:32 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 14:15:39 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 14:08:55 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,4 @@ int	init_philosophers(t_philo_infos *infos, t_philo **philos_ptr)
 	}
 	*philos_ptr = philos;
 	return (ALL_GOOD);
-}
-
-void	print_philo(int nb_philo, t_philo *philos)
-{
-	int	i;
-
-	i = 0;
-	while (i < nb_philo)
-	{
-		printf("Philo %d\n", philos[i].id);
-		i++;
-	}
 }

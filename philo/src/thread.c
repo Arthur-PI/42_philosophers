@@ -6,20 +6,11 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:21:19 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/07 15:51:08 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:04:35 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-t_thread_args	get_thread_args(t_philo_infos *infos, t_philo *philo)
-{
-	t_thread_args	args;
-
-	args.infos = infos;
-	args.philo = philo;
-	return (args);
-}
 
 int	init_thread(t_philo_infos *infos, t_philo *philos)
 {
@@ -39,5 +30,6 @@ int	init_thread(t_philo_infos *infos, t_philo *philos)
 	i = 0;
 	while (i < infos->nb_philo)
 		pthread_join(threads[i++], NULL);
+	free(threads);
 	return (ALL_GOOD);
 }

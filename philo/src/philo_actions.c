@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:38:16 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 14:55:45 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:05:44 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,13 @@ void	*philo_main(void *arg)
 		ft_usleep(infos->time_to_eat / 10, infos);
 	while (!someone_died(infos))
 	{
-		if (pthread_create(&die_thread, NULL, &death_main, arg) == -1)
-		{
-			error_msg(THREAD_INIT_ERROR);
-			return (NULL);
-		}
+		pthread_create(&die_thread, NULL, &death_main, arg);
 		pthread_detach(die_thread);
 		philo_eat(philo, infos);
 		check_max_eat(infos);
 		philo_sleep(philo, infos);
 		philo_think(philo, infos);
 	}
+	usleep(10000);
 	return (NULL);
 }

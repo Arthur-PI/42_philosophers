@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 14:55:34 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:20:14 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 #  define FALSE 0
 # endif
 
-# define INFO_MSG		"%4ld " WHITE "%d" RESET " %s\n"
+# define INFO_MSG "%4ld " WHITE "%d" RESET " %s\n"
 
 # define FORK_MESSAGE	"has taken a fork"
 # define EAT_MESSAGE	GREEN "is eating" RESET
@@ -58,7 +58,6 @@
 
 typedef struct timeval	t_time;
 typedef pthread_mutex_t	t_fork;
-
 
 typedef struct s_philo_infos
 {
@@ -84,12 +83,6 @@ typedef struct s_philo
 	t_fork			*fork_right;
 	t_philo_infos	*infos;
 }				t_philo;
-
-typedef struct s_thread_args
-{
-	t_philo			*philo;
-	t_philo_infos	*infos;
-}				t_thread_args;
 
 int		parse_args(char **args, t_philo_infos *infos);
 int		ft_abs(int n);
