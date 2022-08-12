@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/12 15:01:18 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/12 15:17:01 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int		ft_isdigit(char c);
 int		error_msg(int code);
 int		usage(const char *p_name);
 void	parse_args(char **args, t_philo_infos *infos);
+void	start_philos(t_philo_infos *infos);
 
 #endif
