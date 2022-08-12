@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:34:37 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/11 16:15:42 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/12 15:01:18 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define FORK_MALLOC_ERROR 4
 # define THREAD_INIT_ERROR 5
 # define MUTEX_INIT_ERROR 6
+# define INVALID_ARG_ERROR 7
 
 # define DEAD 1
 # define ALIVE 0
@@ -48,5 +49,32 @@
 # define SLEEP_MESSAGE	"\033[1;34mis sleeping\033[0m"
 # define THINK_MESSAGE	"\033[1;33mis thinking\033[0m"
 # define DIE_MESSAGE	"\033[1;31mdied\033[0m"
+
+typedef struct timeval	t_time;
+
+typedef struct s_philo_infos
+{
+	int		nb_philo;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		time_to_die;
+	int		must_eat_times;
+	int		eat_times;
+	int		over;
+	long	start_time;
+}				t_philo_infos;
+
+typedef struct s_philo
+{
+	int				id;
+	int				nb_eat;
+	long			last_eat_time;
+	t_philo_infos	*infos;
+}				t_philo;
+
+int		ft_isdigit(char c);
+int		error_msg(int code);
+int		usage(const char *p_name);
+void	parse_args(char **args, t_philo_infos *infos);
 
 #endif

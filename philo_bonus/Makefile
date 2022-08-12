@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/11 16:12:06 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/12 15:01:45 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ H_DIR	= incl
 
 ### SOURCE FILES ###
 SRCS	=  main.c \
+		   parse.c \
+		   error.c \
+		   utils.c \
 
 ### HEADER FILES ###
 H_FILES	= philo.h
