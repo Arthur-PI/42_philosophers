@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/12 15:17:31 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/13 14:16:09 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS	= -Wall -Wextra -Werror -pthread -g
 
 ### EXECUTABLE ###
 NAME	= philo_bonus
-ARGS	= 4 800 200 200 5
+ARGS	= 4 800 200 200
 
 ### INCLUDES ###
 OBJ_DIR	= bin
@@ -30,6 +30,8 @@ SRCS	=  main.c \
 		   error.c \
 		   utils.c \
 		   fork.c \
+		   philo_action.c \
+		   time.c \
 
 ### HEADER FILES ###
 H_FILES	= philo.h
