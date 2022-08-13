@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 09:47:58 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/13 13:37:29 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/13 19:48:47 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,18 @@ int	error_msg(int code)
 {
 	char	*s;
 	
-	s = "An error occured during the program";
-	printf("%s. code=%d\n", s, code);
+	if (code == PARSE_ERROR)
+		s = "Error: something is wrong with the arguments";
+	else if (code == PHILO_MALLOC_ERROR)
+		s = "Error: could not allocate memory for the philosophers";
+	else if (code == FORK_MALLOC_ERROR)
+		s = "Error: could not allocate memory for the forks";
+	else if (code == THREAD_INIT_ERROR)
+		s = "Error: could not initalize the threads";
+	else if (code == MUTEX_INIT_ERROR)
+		s = "Error: could not initialize the mutex";
+	else
+		s = "An error occured during the program";
+	printf("%s\n", s);
 	return (code);
 }
