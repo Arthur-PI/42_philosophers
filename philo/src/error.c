@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 09:47:58 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/12 15:04:06 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/13 13:37:29 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int	error_msg(int code)
 {
 	char	*s;
 	
-	if (code == INVALID_ARG_ERROR)
-		s = "Error: invalid arguments";
-	else
-		s = "An error occured during the program";
+	s = "An error occured during the program";
 	printf("%s. code=%d\n", s, code);
 	return (code);
 }

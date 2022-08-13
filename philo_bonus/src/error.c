@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:40:32 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/12 15:06:14 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/13 17:35:02 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	error_msg(int code)
 
 	if (code == INVALID_ARG_ERROR)
 		s = "Error: invalid arguments";
+	else if (code == SEM_INIT_ERROR)
+		s = "Error: could not initialize the semaphores";
+	else if (code == MALLOC_ERROR)
+		s = "Error: could not allocate memory with malloc";
 	else
 		s = "An error occured during the program";
 	printf("%s\n", s);

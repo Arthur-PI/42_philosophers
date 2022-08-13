@@ -6,7 +6,7 @@
 #    By: apigeon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:08:04 by apigeon           #+#    #+#              #
-#    Updated: 2022/08/13 14:16:09 by apigeon          ###   ########.fr        #
+#    Updated: 2022/08/13 17:10:47 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS	= -Wall -Wextra -Werror -pthread -g
 
 ### EXECUTABLE ###
 NAME	= philo_bonus
-ARGS	= 4 800 200 200
+ARGS	= 5 810 200 200 5
 
 ### INCLUDES ###
 OBJ_DIR	= bin
@@ -56,7 +56,7 @@ UNAME_S = $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 	VALGRIND = leaks --list --groupByType --atExit --
 else
-	VALGRIND = valgrind --track-origins=yes --leak-check=full -s
+	VALGRIND = valgrind --track-origins=yes --leak-check=full
 endif
 
 ### RULES ###
@@ -75,10 +75,10 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADERS)
 	@echo "$(NAME): $(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(GREEN)[Done]$(RESET)"
 
 run: $(NAME)
-	@./$(NAME) $(ARGS)
+	./$(NAME) $(ARGS)
 
 val: $(NAME)
-	@$(VALGRIND) ./$(NAME) $(ARGS)
+	$(VALGRIND) ./$(NAME) $(ARGS)
 
 clean:
 	@echo "$(NAME): $(RED)Supressing object files$(RESET)"

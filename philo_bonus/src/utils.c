@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:58:24 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/13 14:05:35 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/13 14:08:24 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ int	ft_isdigit(char c)
 
 void	info_msg(long time, t_philo *philo, char *msg)
 {
-	sem_wait(&philo->infos->over_sem);
-	if (!philo->infos->over)
-		printf(INFO_MSG, time, philo->id, msg);
-	sem_post(&philo->infos->over_sem);
+	sem_wait(philo->infos->write_sem);
+	printf(INFO_MSG, time, philo->id, msg);
+	sem_post(philo->infos->write_sem);
 }
 
-void	ft_usleep(int ms, t_philo_infos *infos)
+void	ft_usleep(int ms)
 {
 	int		offset;
 	long	start;
@@ -35,6 +34,6 @@ void	ft_usleep(int ms, t_philo_infos *infos)
 	if (ms < 100)
 		offset = ms / 10;
 	offset *= 100;
-	while (!is_someone_dead(infos) && get_time(start) < ms)
+	while (get_time(start) < ms)
 		usleep(offset);
 }
