@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 09:47:58 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/13 19:48:47 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/14 11:51:57 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	usage(const char *p_name)
 int	error_msg(int code)
 {
 	char	*s;
-	
+
 	if (code == PARSE_ERROR)
 		s = "Error: something is wrong with the arguments";
 	else if (code == PHILO_MALLOC_ERROR)
