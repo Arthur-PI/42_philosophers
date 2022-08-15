@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:09:33 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/13 17:38:04 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/15 10:52:03 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	*death_monitoring(void *arg)
 
 	philo = (t_philo *)arg;
 	infos = philo->infos;
-	ft_usleep(infos->time_to_die);
+	ft_usleep(infos->time_to_die + 1);
 	death_time = get_time(infos->start_time);
 	if (philo->nb_eat != infos->must_eat_times \
 			&& death_time - philo->last_eat_time >= infos->time_to_die)
 	{
-		sem_post(infos->over_sem);
 		sem_wait(infos->write_sem);
 		printf(INFO_MSG, death_time, philo->id, DIE_MESSAGE);
+		sem_post(infos->over_sem);
 	}
 	return (NULL);
 }

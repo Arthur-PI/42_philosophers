@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:38:16 by apigeon           #+#    #+#             */
-/*   Updated: 2022/08/10 18:28:59 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/08/15 10:51:48 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	*death_main(void *arg)
 
 	philo = (t_philo *)arg;
 	infos = philo->infos;
-	ft_usleep(infos->time_to_die, infos);
+	ft_usleep(infos->time_to_die + 1, infos);
 	pthread_mutex_lock(&infos->over_mutex);
 	death_time = get_time(infos->start_time);
 	if (!infos->over && death_time - philo->time_last_eat >= infos->time_to_die)
